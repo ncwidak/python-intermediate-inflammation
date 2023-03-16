@@ -86,6 +86,11 @@ def test_daily_min(test, expected):
     npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
 
 
+@pytest.mark.parametrize(
+    "test, expected",
+    [
+        ([ [0, 0, 0], [0, 0, 0], [0, 0, 0] ], [0, 0, 0]),
+    ])
 def test_daily_std(test, expected):
     ''' test daily standard deviation function '''
 
