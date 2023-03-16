@@ -13,18 +13,18 @@ def main(args):
     - selecting the necessary models and views for the current task
     - passing data between models and views
     """
-    in_files = args.infiles
-    if not isinstance(in_files, list):
-        in_files = [args.infiles]
+    infiles = args.in_files
+    if not isinstance(infiles, list):
+        infiles = [args.in_files]
 
-    for filename in in_files:
+    for filename in infiles:
         inflammation_data = models.load_csv(filename)
 
         view_data = {
             'average': models.daily_mean(inflammation_data),
             'max': models.daily_max(inflammation_data),
-            'min': models.daily_min(inflammation_data)
-            }
+            'min': models.daily_min(inflammation_data),
+            'std': models.daily_std(inflammation_data)}
 
         views.visualize(view_data)
 
